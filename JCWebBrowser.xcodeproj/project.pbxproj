@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,10 @@
 		D9073B3026D76F2600664398 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9073B2E26D76F2600664398 /* Main.storyboard */; };
 		D9073B3226D76F3800664398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9073B3126D76F3800664398 /* Assets.xcassets */; };
 		D9073B3526D76F3800664398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9073B3326D76F3800664398 /* LaunchScreen.storyboard */; };
+		D9073B4626D7703C00664398 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D9073B4526D7703C00664398 /* SnapKit */; };
+		D9073B4926D770A700664398 /* JCBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9073B4826D770A700664398 /* JCBrowserView.swift */; };
+		D9073B4C26D7723E00664398 /* JCToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9073B4B26D7723E00664398 /* JCToolBar.swift */; };
+		D9073B5726D77B4600664398 /* JCBrowserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9073B5626D77B4600664398 /* JCBrowserController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,9 @@
 		D9073B3126D76F3800664398 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9073B3426D76F3800664398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9073B3626D76F3800664398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9073B4826D770A700664398 /* JCBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCBrowserView.swift; sourceTree = "<group>"; };
+		D9073B4B26D7723E00664398 /* JCToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCToolBar.swift; sourceTree = "<group>"; };
+		D9073B5626D77B4600664398 /* JCBrowserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCBrowserController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9073B4626D7703C00664398 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +64,50 @@
 		D9073B2726D76F2600664398 /* JCWebBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				D9073B2826D76F2600664398 /* AppDelegate.swift */,
-				D9073B2A26D76F2600664398 /* SceneDelegate.swift */,
-				D9073B2C26D76F2600664398 /* ViewController.swift */,
+				D9073B4326D76FE500664398 /* Model */,
+				D9073B4226D76FDD00664398 /* View */,
+				D9073B4126D76FD300664398 /* Controller */,
+				D9073B4026D76FC800664398 /* Delegate */,
 				D9073B2E26D76F2600664398 /* Main.storyboard */,
 				D9073B3126D76F3800664398 /* Assets.xcassets */,
 				D9073B3326D76F3800664398 /* LaunchScreen.storyboard */,
 				D9073B3626D76F3800664398 /* Info.plist */,
 			);
 			path = JCWebBrowser;
+			sourceTree = "<group>";
+		};
+		D9073B4026D76FC800664398 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				D9073B2826D76F2600664398 /* AppDelegate.swift */,
+				D9073B2A26D76F2600664398 /* SceneDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		D9073B4126D76FD300664398 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D9073B2C26D76F2600664398 /* ViewController.swift */,
+				D9073B5626D77B4600664398 /* JCBrowserController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D9073B4226D76FDD00664398 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D9073B4B26D7723E00664398 /* JCToolBar.swift */,
+				D9073B4826D770A700664398 /* JCBrowserView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D9073B4326D76FE500664398 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +126,9 @@
 			dependencies = (
 			);
 			name = JCWebBrowser;
+			packageProductDependencies = (
+				D9073B4526D7703C00664398 /* SnapKit */,
+			);
 			productName = JCWebBrowser;
 			productReference = D9073B2526D76F2600664398 /* JCWebBrowser.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +156,9 @@
 				Base,
 			);
 			mainGroup = D9073B1C26D76F2600664398;
+			packageReferences = (
+				D9073B4426D7703C00664398 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = D9073B2626D76F2600664398 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +186,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9073B4C26D7723E00664398 /* JCToolBar.swift in Sources */,
 				D9073B2D26D76F2600664398 /* ViewController.swift in Sources */,
 				D9073B2926D76F2600664398 /* AppDelegate.swift in Sources */,
+				D9073B4926D770A700664398 /* JCBrowserView.swift in Sources */,
+				D9073B5726D77B4600664398 /* JCBrowserController.swift in Sources */,
 				D9073B2B26D76F2600664398 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +341,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79BPG52476;
 				INFOPLIST_FILE = JCWebBrowser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +361,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 79BPG52476;
 				INFOPLIST_FILE = JCWebBrowser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -341,6 +395,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D9073B4426D7703C00664398 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D9073B4526D7703C00664398 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9073B4426D7703C00664398 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D9073B1D26D76F2600664398 /* Project object */;
 }
