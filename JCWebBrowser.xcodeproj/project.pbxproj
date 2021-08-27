@@ -17,6 +17,7 @@
 		D9073B4926D770A700664398 /* JCBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9073B4826D770A700664398 /* JCBrowserView.swift */; };
 		D9073B4C26D7723E00664398 /* JCToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9073B4B26D7723E00664398 /* JCToolBar.swift */; };
 		D9073B5726D77B4600664398 /* JCBrowserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9073B5626D77B4600664398 /* JCBrowserController.swift */; };
+		D967EE3126D86FF700D10D61 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = D967EE3026D86FF700D10D61 /* JGProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D967EE3126D86FF700D10D61 /* JGProgressHUD in Frameworks */,
 				D9073B4626D7703C00664398 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,10 +66,10 @@
 		D9073B2726D76F2600664398 /* JCWebBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				D9073B4026D76FC800664398 /* Delegate */,
 				D9073B4326D76FE500664398 /* Model */,
 				D9073B4226D76FDD00664398 /* View */,
 				D9073B4126D76FD300664398 /* Controller */,
-				D9073B4026D76FC800664398 /* Delegate */,
 				D9073B2E26D76F2600664398 /* Main.storyboard */,
 				D9073B3126D76F3800664398 /* Assets.xcassets */,
 				D9073B3326D76F3800664398 /* LaunchScreen.storyboard */,
@@ -128,6 +130,7 @@
 			name = JCWebBrowser;
 			packageProductDependencies = (
 				D9073B4526D7703C00664398 /* SnapKit */,
+				D967EE3026D86FF700D10D61 /* JGProgressHUD */,
 			);
 			productName = JCWebBrowser;
 			productReference = D9073B2526D76F2600664398 /* JCWebBrowser.app */;
@@ -158,6 +161,7 @@
 			mainGroup = D9073B1C26D76F2600664398;
 			packageReferences = (
 				D9073B4426D7703C00664398 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				D967EE2F26D86FF700D10D61 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = D9073B2626D76F2600664398 /* Products */;
 			projectDirPath = "";
@@ -405,6 +409,14 @@
 				minimumVersion = 5.0.1;
 			};
 		};
+		D967EE2F26D86FF700D10D61 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -412,6 +424,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D9073B4426D7703C00664398 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		D967EE3026D86FF700D10D61 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D967EE2F26D86FF700D10D61 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

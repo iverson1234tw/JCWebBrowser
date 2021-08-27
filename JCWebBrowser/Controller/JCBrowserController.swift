@@ -7,24 +7,22 @@
 
 import UIKit
 import WebKit
+import JGProgressHUD
 
 class JCBrowserController: UIViewController, WKNavigationDelegate {
+    
+    // hud init
+    let hud = JGProgressHUD()
     
     // MARK: - didStartProvisionalNavigation (WKWebView)
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+                        
+        // hud start loading
+        hud.show(in: view, animated: true)
         
-        // reloadButton properties
-        jcBrowserView.jcToolBar.reloadButton.isUserInteractionEnabled = false
-        
-        // reloadButton set image
-        jcBrowserView.jcToolBar.reloadButton.setImage(webView.isLoading ? UIImage(named: "reload_disable") : UIImage(named: "reload"), for: .normal)
-        
-        // shareButton properties
-        jcBrowserView.jcToolBar.shareButton.isUserInteractionEnabled = false
-        
-        // shareButton set image
-        jcBrowserView.jcToolBar.shareButton.setImage(webView.isLoading ? UIImage(named: "share_disable") : UIImage(named: "share"), for: .normal)
+        // handle toolBar buttons status
+        jcBrowserView.toolBarButtonStatus(isLoading: webView.isLoading)
         
     }
     
@@ -32,25 +30,13 @@ class JCBrowserController: UIViewController, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         
-        // reloadButton properties
-        jcBrowserView.jcToolBar.reloadButton.isUserInteractionEnabled = true
+        // dismiss hud
+        hud.dismiss(animated: true)
         
-        // reloadButton set image
-        jcBrowserView.jcToolBar.reloadButton.setImage(UIImage(named: "reload"), for: .normal)
+        // handle toolBar buttons status
+        jcBrowserView.toolBarButtonStatus(isLoading: webView.isLoading)
         
-        // shareButton properties
-        jcBrowserView.jcToolBar.shareButton.isUserInteractionEnabled = true
-        
-        // shareButton set image
-        jcBrowserView.jcToolBar.shareButton.setImage(UIImage(named: "share"), for: .normal)
-        
-        // previousButton set image
-        jcBrowserView.jcToolBar.backButton.setImage(webView.canGoBack ? UIImage(named: "left_arrow") : UIImage(named: "left_arrow_disable"), for: .normal)
-        
-        // nextButton set image
-        jcBrowserView.jcToolBar.forwardButton.setImage(webView.canGoForward ? UIImage(named: "right_arrow") : UIImage(named: "right_arrow_disable"), for: .normal)
-        
-    }        
+    }
     
     // jcBrowserView declare
     var jcBrowserView: JCBrowserView!
@@ -59,9 +45,9 @@ class JCBrowserController: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // jcBrowserView init
-        jcBrowserView = JCBrowserView(frame: .zero, url: "https://www.facebook.com/OBdesign.tw/videos/3057903817778160/")                
+        jcBrowserView = JCBrowserView(frame: .zero, url: "https://www.facebook.com/OBdesign.tw/videos/3057903817778160/")
         
         // jcBrowserView delegate
         jcBrowserView.webView.navigationDelegate = self
@@ -74,7 +60,7 @@ class JCBrowserController: UIViewController, WKNavigationDelegate {
         jcBrowserView.jcToolBar.backButton.addTarget(self, action: #selector(backButtonClicked), for: .touchUpInside)
         jcBrowserView.jcToolBar.reloadButton.addTarget(self, action: #selector(reloadButtonClicked), for: .touchUpInside)
         jcBrowserView.jcToolBar.forwardButton.addTarget(self, action: #selector(forwardButtonClicked), for: .touchUpInside)
-        jcBrowserView.jcToolBar.shareButton.addTarget(self, action: #selector(shareButtonClicked), for: .touchUpInside)
+//        jcBrowserView.jcToolBar.shareButton.addTarget(self, action: #selector(shareButtonClicked), for: .touchUpInside)
         
         view.addSubview(jcBrowserView)
 
@@ -125,20 +111,20 @@ class JCBrowserController: UIViewController, WKNavigationDelegate {
         
     }
     
-    // MARK: - shareButton Clicked
+    // FIXME: - shareButton Clicked
     
-    @objc func shareButtonClicked() {
-        
-        // item init
-        let item: [Any] = ["\(jcBrowserView.webView.title!)\n\n\(jcBrowserView.webView.url!)"]
-        
-        // activity init
-        let activity = UIActivityViewController(activityItems: item, applicationActivities: nil)
-        
-        // present activity
-        present(activity, animated: true, completion: nil)
-        
-    }
+//    @objc func shareButtonClicked() {
+//
+//        // item init
+//        let item: [Any] = ["\(jcBrowserView.webView.title!)\n\n\(jcBrowserView.webView.url!)"]
+//
+//        // activity init
+//        let activity = UIActivityViewController(activityItems: item, applicationActivities: nil)
+//
+//        // present activity
+//        present(activity, animated: true, completion: nil)
+//
+//    }
 
     // MARK: - observeValue (KVO)
     
@@ -148,14 +134,7 @@ class JCBrowserController: UIViewController, WKNavigationDelegate {
         if keyPath == "estimatedProgress" {
             
             // set current progress
-            jcBrowserView.progressView.progress = Float(jcBrowserView.webView.estimatedProgress);
-            
-            // hide progressView if 100% loading
-            if jcBrowserView.webView.estimatedProgress == 1.0 {
-                jcBrowserView.progressView.isHidden = true
-            } else {
-                jcBrowserView.progressView.isHidden = false
-            }
+            jcBrowserView.progress = Float(jcBrowserView.webView.estimatedProgress);
             
         }
         

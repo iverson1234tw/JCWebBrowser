@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // reuse cell init
         var cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier)
-
+        
         // if cell is nil
         if cell == nil {
             
@@ -40,6 +40,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         // cell textLabel properties
+        cell?.selectionStyle = .none
         cell?.textLabel?.text = "Facebook Live Page"
         cell?.textLabel?.font = UIFont(name: "Helvetica", size: 14.0)
         cell?.textLabel?.textColor = .darkGray

@@ -54,6 +54,7 @@ class JCToolBar: UIView {
         
         // shareButton properties
         shareButton.setImage(UIImage(named: "share_disable"), for: .normal)
+        shareButton.isHidden = true
         
         addSubview(shareButton)
         
